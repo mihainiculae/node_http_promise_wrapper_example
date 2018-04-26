@@ -1,0 +1,10 @@
+{
+    "name": "node-http-promise-wrapper-example",
+    "version": "0.0.1",
+    "author": "Mihai Niculae <zizoo.99@gmail.com>",
+    "scripts": {
+        "start": "node test.js"
+    },
+    "license": "UNLICENSED",
+    "private": true
+}
