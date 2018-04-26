@@ -24,7 +24,6 @@ function makeRequest(data, options, cb) {
             });
             res.on("end", () => {
                 res.requestTime = Date.now() - options.requestStart;
-                console.log(res.statusCode);
                 cb(null, res);
             });
         })
@@ -35,7 +34,6 @@ function makeRequest(data, options, cb) {
             });
         })
         .on("error", error => {
-            console.log(error);
             if (!options.errors) options.errors = [];
             options.requestTime = Date.now() - options.requestStart;
             options.errors.push({ error });

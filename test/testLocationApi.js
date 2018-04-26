@@ -65,19 +65,20 @@ function checkIfWeatherDataAndCity(result, cityName, woeid) {
             return a.applicable_date - b.applicable_date;
         });
         var currentWeather = sortedWeather[0];
-
+        if (asJson.title !== cityName)
+            reject(`Returned city was not ${cityName}`);
         console.log(`
         Weather data for ${cityName}:
         State - ${currentWeather.weather_state_name}
         Temperature - ${currentWeather.the_temp}C
         Wind Speed - ${Math.round(currentWeather.wind_speed)}mph
         `);
+        resolve();
     });
 }
 
 function checkCityIsClosest(result, cityName) {
     return new Promise((resolve, reject) => {
-        console.log(result)
         if (result.statusCode > 200)
             reject(`Response code was ${result.statusCode}`);
         var asJson = JSON.parse(result.responseBuffer);
